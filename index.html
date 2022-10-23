@@ -19,7 +19,7 @@
   <main class="main">
     <section class="tools">
       <h2 class="ir-so">도구</h2>
-      <button class="brush" data-text="브러쉬">
+      <button id="brush" data-text="브러쉬">
         <span class="ir-so">브러쉬</span>
         <i class="fa-solid fa-paintbrush"></i>
       </button>
@@ -48,7 +48,7 @@
       </button>
     </section>
     <section class="canvas">
-      <canvas></canvas>
+      <canvas id="canvas"></canvas>
     </section>
     <section class="panel">
       <h2 class="ir-so">상세 패널</h2>
@@ -59,143 +59,150 @@
         <table>
           <tbody>
             <tr>
-              <td class="color-option" style="background: rgb(51, 25, 0);"></td>
-              <td class="color-option" style="background: rgb(51, 51, 0);"></td>
-              <td class="color-option" style="background: rgb(25, 51, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 51, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 51, 25);"></td>
-              <td class="color-option" style="background: rgb(0, 51, 51);"></td>
-              <td class="color-option" style="background: rgb(0, 25, 51);"></td>
-              <td class="color-option" style="background: rgb(0, 0, 51);"></td>
-              <td class="color-option" style="background: rgb(25, 0, 51);"></td>
-              <td class="color-option" style="background: rgb(51, 0, 51);"></td>
-              <td class="color-option" style="background: rgb(51, 0, 25);"></td>
-              <td class="color-option" style="background: rgb(0, 0, 0);"></td>
+              <td style="background: #331900;" data-color="#331900"></td>
+              <td style="background: #333300;" data-color="#333300"></td>
+              <td style="background: #193300;" data-color="#193300"></td>
+              <td style="background: #003300;" data-color="#003300"></td>
+              <td style="background: #003319;" data-color="#003319"></td>
+              <td style="background: #003333;" data-color="#003333"></td>
+              <td style="background: #001933;" data-color="#001933"></td>
+              <td style="background: #000033;" data-color="#000033"></td>
+              <td style="background: #190033;" data-color="#190033"></td>
+              <td style="background: #330033;" data-color="#330033"></td>
+              <td style="background: #330019;" data-color="#330019"></td>
+              <td style="background: #000000;" data-color="#000000"></td>
             </tr>
             <tr>
-              <td class="color-option" style="background: rgb(102, 51, 0);"></td>
-              <td class="color-option" style="background: rgb(102, 102, 0);"></td>
-              <td class="color-option" style="background: rgb(51, 102, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 102, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 102, 51);"></td>
-              <td class="color-option" style="background: rgb(0, 102, 102);"></td>
-              <td class="color-option" style="background: rgb(0, 51, 102);"></td>
-              <td class="color-option" style="background: rgb(0, 0, 102);"></td>
-              <td class="color-option" style="background: rgb(51, 0, 102);"></td>
-              <td class="color-option" style="background: rgb(102, 0, 102);"></td>
-              <td class="color-option" style="background: rgb(102, 0, 51);"></td>
-              <td class="color-option" style="background: rgb(32, 32, 32);"></td>
+              <td style="background: #663300;" data-color="#663300"></td>
+              <td style="background: #666600;" data-color="#666600"></td>
+              <td style="background: #336600;" data-color="#336600"></td>
+              <td style="background: #006600;" data-color="#006600"></td>
+              <td style="background: #006633;" data-color="#006633"></td>
+              <td style="background: #006666;" data-color="#006666"></td>
+              <td style="background: #003366;" data-color="#003366"></td>
+              <td style="background: #000066;" data-color="#000066"></td>
+              <td style="background: #330066;" data-color="#330066"></td>
+              <td style="background: #660066;" data-color="#660066"></td>
+              <td style="background: #660033;" data-color="#660033"></td>
+              <td style="background: #202020;" data-color="#202020"></td>
             </tr>
             <tr>
-              <td class="color-option" style="background: rgb(153, 76, 0);"></td>
-              <td class="color-option" style="background: rgb(153, 153, 0);"></td>
-              <td class="color-option" style="background: rgb(76, 153, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 153, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 153, 76);"></td>
-              <td class="color-option" style="background: rgb(0, 153, 153);"></td>
-              <td class="color-option" style="background: rgb(0, 76, 153);"></td>
-              <td class="color-option" style="background: rgb(0, 0, 153);"></td>
-              <td class="color-option" style="background: rgb(76, 0, 153);"></td>
-              <td class="color-option" style="background: rgb(153, 0, 153);"></td>
-              <td class="color-option" style="background: rgb(153, 0, 76);"></td>
-              <td class="color-option" style="background: rgb(64, 64, 64);"></td>
+              <td style="background: #994c00;" data-color="#994c00"></td>
+              <td style="background: #999900;" data-color="#999900"></td>
+              <td style="background: #4c9900;" data-color="#4c9900"></td>
+              <td style="background: #009900;" data-color="#009900"></td>
+              <td style="background: #00994c;" data-color="#00994c"></td>
+              <td style="background: #009999;" data-color="#009999"></td>
+              <td style="background: #004c99;" data-color="#004c99"></td>
+              <td style="background: #000099;" data-color="#000099"></td>
+              <td style="background: #4c0099;" data-color="#4c0099"></td>
+              <td style="background: #990099;" data-color="#990099"></td>
+              <td style="background: #99004c;" data-color="#99004c"></td>
+              <td style="background: #404040;" data-color="#404040"></td>
             </tr>
             <tr>
-              <td class="color-option" style="background: rgb(204, 102, 0);"></td>
-              <td class="color-option" style="background: rgb(204, 204, 0);"></td>
-              <td class="color-option" style="background: rgb(102, 204, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 204, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 204, 102);"></td>
-              <td class="color-option" style="background: rgb(0, 204, 204);"></td>
-              <td class="color-option" style="background: rgb(0, 102, 204);"></td>
-              <td class="color-option" style="background: rgb(0, 0, 204);"></td>
-              <td class="color-option" style="background: rgb(102, 0, 204);"></td>
-              <td class="color-option" style="background: rgb(204, 0, 204);"></td>
-              <td class="color-option" style="background: rgb(204, 0, 102);"></td>
-              <td class="color-option" style="background: rgb(96, 96, 96);"></td>
+              <td style="background: #cc6600;" data-color="#cc6600"></td>
+              <td style="background: #cccc00;" data-color="#cccc00"></td>
+              <td style="background: #66cc00;" data-color="#66cc00"></td>
+              <td style="background: #00cc00;" data-color="#00cc00"></td>
+              <td style="background: #00cc66;" data-color="#00cc66"></td>
+              <td style="background: #00cccc;" data-color="#00cccc"></td>
+              <td style="background: #0066cc;" data-color="#0066cc"></td>
+              <td style="background: #0000cc;" data-color="#0000cc"></td>
+              <td style="background: #6600cc;" data-color="#6600cc"></td>
+              <td style="background: #cc00cc;" data-color="#cc00cc"></td>
+              <td style="background: #cc0066;" data-color="#cc0066"></td>
+              <td style="background: #606060;" data-color="#606060"></td>
             </tr>
             <tr>
-              <td class="color-option" style="background: rgb(255, 128, 0);"></td>
-              <td class="color-option" style="background: rgb(255, 255, 0);"></td>
-              <td class="color-option" style="background: rgb(128, 255, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 255, 0);"></td>
-              <td class="color-option" style="background: rgb(0, 255, 128);"></td>
-              <td class="color-option" style="background: rgb(0, 255, 255);"></td>
-              <td class="color-option" style="background: rgb(0, 128, 255);"></td>
-              <td class="color-option" style="background: rgb(0, 0, 255);"></td>
-              <td class="color-option" style="background: rgb(127, 0, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 0, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 0, 127);"></td>
-              <td class="color-option" style="background: rgb(128, 128, 128);"></td>
+              <td style="background: #ff8000;" data-color="#ff8000"></td>
+              <td style="background: #ffff00;" data-color="#ffff00"></td>
+              <td style="background: #80ff00;" data-color="#80ff00"></td>
+              <td style="background: #00ff00;" data-color="#00ff00"></td>
+              <td style="background: #00ff80;" data-color="#00ff80"></td>
+              <td style="background: #00ffff;" data-color="#00ffff"></td>
+              <td style="background: #0080ff;" data-color="#0080ff"></td>
+              <td style="background: #0000ff;" data-color="#0000ff"></td>
+              <td style="background: #7f00ff;" data-color="#7f00ff"></td>
+              <td style="background: #ff00ff;" data-color="#ff00ff"></td>
+              <td style="background: #ff007f;" data-color="#ff007f"></td>
+              <td style="background: #808080;" data-color="#808080"></td>
             </tr>
             <tr>
-              <td class="color-option" style="background: rgb(255, 153, 51);"></td>
-              <td class="color-option" style="background: rgb(255, 255, 51);"></td>
-              <td class="color-option" style="background: rgb(153, 255, 51);"></td>
-              <td class="color-option" style="background: rgb(51, 255, 51);"></td>
-              <td class="color-option" style="background: rgb(51, 255, 153);"></td>
-              <td class="color-option" style="background: rgb(51, 255, 255);"></td>
-              <td class="color-option" style="background: rgb(51, 153, 255);"></td>
-              <td class="color-option" style="background: rgb(51, 51, 255);"></td>
-              <td class="color-option" style="background: rgb(153, 51, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 51, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 51, 153);"></td>
-              <td class="color-option" style="background: rgb(160, 160, 160);"></td>
+              <td style="background: #ff9933;" data-color="#ff9933"></td>
+              <td style="background: #ffff33;" data-color="#ffff33"></td>
+              <td style="background: #99ff33;" data-color="#99ff33"></td>
+              <td style="background: #33ff33;" data-color="#33ff33"></td>
+              <td style="background: #33ff99;" data-color="#33ff99"></td>
+              <td style="background: #33ffff;" data-color="#33ffff"></td>
+              <td style="background: #3399ff;" data-color="#3399ff"></td>
+              <td style="background: #3333ff;" data-color="#3333ff"></td>
+              <td style="background: #9933ff;" data-color="#9933ff"></td>
+              <td style="background: #ff33ff;" data-color="#ff33ff"></td>
+              <td style="background: #ff3399;" data-color="#ff3399"></td>
+              <td style="background: #a0a0a0;" data-color="#a0a0a0"></td>
             </tr>
             <tr>
-              <td class="color-option" style="background: rgb(255, 178, 102);"></td>
-              <td class="color-option" style="background: rgb(255, 255, 102);"></td>
-              <td class="color-option" style="background: rgb(178, 255, 102);"></td>
-              <td class="color-option" style="background: rgb(102, 255, 102);"></td>
-              <td class="color-option" style="background: rgb(102, 255, 178);"></td>
-              <td class="color-option" style="background: rgb(102, 255, 255);"></td>
-              <td class="color-option" style="background: rgb(102, 178, 255);"></td>
-              <td class="color-option" style="background: rgb(102, 102, 255);"></td>
-              <td class="color-option" style="background: rgb(178, 102, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 102, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 102, 178);"></td>
-              <td class="color-option" style="background: rgb(192, 192, 192);"></td>
+              <td style="background: #ffb266;" data-color="#ffb266"></td>
+              <td style="background: #ffff66;" data-color="#ffff66"></td>
+              <td style="background: #b2ff66;" data-color="#b2ff66"></td>
+              <td style="background: #66ff66;" data-color="#66ff66"></td>
+              <td style="background: #66ffb2;" data-color="#66ffb2"></td>
+              <td style="background: #66ffff;" data-color="#66ffff"></td>
+              <td style="background: #66b2ff;" data-color="#66b2ff"></td>
+              <td style="background: #6666ff;" data-color="#6666ff"></td>
+              <td style="background: #b266ff;" data-color="#b266ff"></td>
+              <td style="background: #ff66ff;" data-color="#ff66ff"></td>
+              <td style="background: #ff66b2;" data-color="#ff66b2"></td>
+              <td style="background: #c0c0c0;" data-color="#c0c0c0"></td>
             </tr>
             <tr>
-              <td class="color-option" style="background: rgb(255, 204, 153);"></td>
-              <td class="color-option" style="background: rgb(255, 255, 153);"></td>
-              <td class="color-option" style="background: rgb(204, 255, 153);"></td>
-              <td class="color-option" style="background: rgb(153, 255, 153);"></td>
-              <td class="color-option" style="background: rgb(153, 255, 204);"></td>
-              <td class="color-option" style="background: rgb(153, 255, 255);"></td>
-              <td class="color-option" style="background: rgb(153, 204, 255);"></td>
-              <td class="color-option" style="background: rgb(153, 153, 255);"></td>
-              <td class="color-option" style="background: rgb(204, 153, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 153, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 153, 204);"></td>
-              <td class="color-option" style="background: rgb(224, 224, 224);"></td>
+              <td style="background: #ffcc99;" data-color="#ffcc99"></td>
+              <td style="background: #ffff99;" data-color="#ffff99"></td>
+              <td style="background: #ccff99;" data-color="#ccff99"></td>
+              <td style="background: #99ff99;" data-color="#99ff99"></td>
+              <td style="background: #99ffcc;" data-color="#99ffcc"></td>
+              <td style="background: #99ffff;" data-color="#99ffff"></td>
+              <td style="background: #99ccff;" data-color="#99ccff"></td>
+              <td style="background: #9999ff;" data-color="#9999ff"></td>
+              <td style="background: #cc99ff;" data-color="#cc99ff"></td>
+              <td style="background: #ff99ff;" data-color="#ff99ff"></td>
+              <td style="background: #ff99cc;" data-color="#ff99cc"></td>
+              <td style="background: #e0e0e0;" data-color="#e0e0e0"></td>
             </tr>
             <tr>
-              <td class="color-option" style="background: rgb(255, 229, 204);"></td>
-              <td class="color-option" style="background: rgb(255, 255, 204);"></td>
-              <td class="color-option" style="background: rgb(229, 255, 204);"></td>
-              <td class="color-option" style="background: rgb(204, 255, 204);"></td>
-              <td class="color-option" style="background: rgb(204, 255, 229);"></td>
-              <td class="color-option" style="background: rgb(204, 255, 255);"></td>
-              <td class="color-option" style="background: rgb(204, 229, 255);"></td>
-              <td class="color-option" style="background: rgb(204, 204, 255);"></td>
-              <td class="color-option" style="background: rgb(229, 204, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 204, 255);"></td>
-              <td class="color-option" style="background: rgb(255, 204, 229);"></td>
-              <td class="color-option" style="background: rgb(255, 255, 255);"></td>
+              <td style="background: #ffe5cc;" data-color="#ffe5cc"></td>
+              <td style="background: #ffffcc;" data-color="#ffffcc"></td>
+              <td style="background: #e5ffcc;" data-color="#e5ffcc"></td>
+              <td style="background: #ccffcc;" data-color="#ccffcc"></td>
+              <td style="background: #ccffe5;" data-color="#ccffe5"></td>
+              <td style="background: #ccffff;" data-color="#ccffff"></td>
+              <td style="background: #cce5ff;" data-color="#cce5ff"></td>
+              <td style="background: #ccccff;" data-color="#ccccff"></td>
+              <td style="background: #e5ccff;" data-color="#e5ccff"></td>
+              <td style="background: #ffccff;" data-color="#ffccff"></td>
+              <td style="background: #ffcce5;" data-color="#ffcce5"></td>
+              <td style="background: #ffffff;" data-color="#ffffff"></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="latest-color"></div>
-      
       <!-- 선 굵기 -->
+      <div class="stroke">
+        <h3>선 굵기</h3>
+        <div class="stroke-range">
+          <input id="stroke-width" type="range" min="1" max="20" value="10" step="1">
+          <span id="stroke-width-num">10</span>
+        </div>
+      </div>
       <!-- 이미지 첨부 -->
       <!-- 텍스트 -->
     </section>
   </main>
 
   <script src="https://kit.fontawesome.com/0d80c14f2f.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>

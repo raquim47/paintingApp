@@ -126,16 +126,16 @@ body {
 }
 
 .swatches h3 {
-  padding-bottom: 6px;
+  padding-bottom: 12px;
   color: #c2ced6;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .swatches .color-input {
   width: 100%;
   height: 40px;
   cursor: pointer;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   background: #2F3336;
 }
 
@@ -160,4 +160,30 @@ body {
 
 .swatches td:hover {
   opacity: .7;
+}
+
+.stroke {
+  padding: 10px 15px;
+}
+
+.stroke h3 {
+  color: #c2ced6;
+  font-size: 12px;
+  padding-bottom: 6px;
+}
+
+.stroke-range {
+  display: flex;
+}
+
+.stroke input {
+  width: 100%;
+  cursor: pointer;
+}
+
+.stroke-range span {
+  width: 20px;
+  margin-left: 12px;
+  text-align: right;
+  color: #c2ced6;
 }
