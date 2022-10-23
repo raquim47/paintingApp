@@ -121,6 +121,7 @@ body {
 }
 
 .swatches {
+  display: none;
   padding: 10px 15px;
   border-bottom: 1px solid rgba(195, 206, 215, 0.2);
 }
@@ -163,6 +164,7 @@ body {
 }
 
 .stroke {
+  display: none;
   padding: 10px 15px;
 }
 
