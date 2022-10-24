@@ -15,34 +15,35 @@
     <h1><i class="fa-solid fa-palette"></i>Paint!</h1>
     <button class="reset">새로 그리기</button>
     <button class="save">이미지 저장</button>
+    <h2>김선영의 뿡림판!</h2>
   </div>
   <main class="main">
     <section class="tools">
       <h2 class="ir-so">도구</h2>
-      <button id="brush" data-text="브러쉬">
+      <button data-text="브러쉬">
         <span class="ir-so">브러쉬</span>
         <i class="fa-solid fa-paintbrush"></i>
       </button>
-      <button class="fill" data-text="채우기">
+      <button data-text="채우기">
         <span class="ir-so">채우기</span>
         <i class="fa-solid fa-fill"></i></button>
-      <button class="rectangle" data-text="사각형">
+      <button data-text="사각형">
         <span class="ir-so">사각형</span>
         <i class="fa-solid fa-square"></i>
       </button>
-      <button class="circle" data-text="원">
+      <button data-text="원">
         <span class="ir-so">원</span>
         <i class="fa-solid fa-circle"></i>
       </button>
-      <button class="eraser" data-text="지우개">
+      <button data-text="지우개">
         <span class="ir-so">지우개</span>
         <i class="fa-solid fa-eraser"></i>
       </button>
-      <button class="text" data-text="텍스트">
+      <button data-text="텍스트">
         <span class="ir-so">텍스트</span>
         <i class="fa-solid fa-font"></i>
       </button>
-      <button class="image" data-text="이미지">
+      <button data-text="이미지">
         <span class="ir-so">이미지</span>
         <i class="fa-solid fa-image"></i>
       </button>
@@ -196,8 +197,68 @@
           <span id="stroke-width-num">10</span>
         </div>
       </div>
-      <!-- 이미지 첨부 -->
       <!-- 텍스트 -->
+      <div class="text" id="text">
+        <h3>텍스트</h3>
+        <div class="text-option">
+          <select id="fontTypes" autocomplete="off" required>
+            <option value="serif" style="font-family: serif">Serif</option>
+            <option value="sans-serif" style="font-family: sans-serif">
+              Sans-serif
+            </option>
+            <option value="courier new" style="font-family: courier new">
+              Courier New
+            </option>
+            <option value="Lucida Console" style="font-family: Lucida Console">
+              Lucida Console
+            </option>
+            <option value="cursive" style="font-family: cursive">
+              Cursive
+            </option>
+            <option value="Brush Script MT" style="font-family: Brush Script MT">
+              Brush Script MT
+            </option>
+            <option value="lucida Handwriting" style="font-family: lucida Handwriting">
+              Lucida Handwriting
+            </option>
+            <option value="copperplate" style="font-family: copperplate">
+              Copperplate
+            </option>
+            <option value="papyrus" style="font-family: Papyrus">
+              Papyrus
+            </option>
+            <option value="'Noto Sans KR', sans-serif" style="font-family: 'Noto Sans KR', sans-serif">
+              Noto Sans 한글
+            </option>
+            <option value="'Nanum Myeongjo', serif" style="font-family: 'Nanum Myeongjo', serif">
+              나눔 명조
+            </option>
+            <option value="'Nanum Pen Script', cursive" style="font-family: 'Nanum Pen Script', cursive">
+              나눔펜
+            </option>
+            <option value="'Jua', sans-serif" style="font-family: 'Jua', sans-serif">
+              주아
+            </option>
+          </select>
+          <select id="fontWeights" required>
+            <option value="normal" selected>Normal</option>
+            <option value="bolder">Bold</option>
+          </select>
+          <input type="number" min="1" value="25" id="fontSizes" />
+        </div>
+        <input class="text-input" type="text" placeholder="Add text here..." id="text-input" />
+      </div>
+      <!-- 이미지 첨부 -->
+      <div class="img-upload" id="img-upload">
+        <h3>이미지 등록</h3>
+        <div class="img-ready" id="img-ready">
+        </div>
+        <label for="file" class="file">
+          + Add photo
+          <input id="file" type="file" accept="image/*">
+        </label>
+        <div id="img-span" class="img-span">캔버스에 드래그하여 이미지를 삽입하세요</div>
+      </div>
     </section>
   </main>
 
