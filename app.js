@@ -14,11 +14,12 @@ const fontTypes = document.querySelector("#fontTypes");
 const fontWeights = document.querySelector("#fontWeights");
 const textInput = document.querySelector("#text-input");
 const textPanel = document.querySelector("#text");
-const imgPanel = document.querySelector("#img-upload");
+const textAlert = document.querySelector("#text-alert");
 
+const imgPanel = document.querySelector("#img-upload");
 const fileInput = document.querySelector("#file");
 const imgReady = document.querySelector("#img-ready");
-const imgSpan = document.querySelector("#img-span");
+const imgAlert = document.querySelector("#img-alert");
 
 const CANVAS_SIZE = 600;
 canvas.width = CANVAS_SIZE;
@@ -114,6 +115,7 @@ const onClickTool = (e) => {
   strokePanel.style.display = "none";
   textPanel.style.display = "none";
   imgPanel.style.display = "none";
+  textAlert.style.display = "none";
   if (data === "브러쉬") {
     isBrush = true;
     canvas.style.cursor = "url(cursors/brush.cur) 0 20, auto";
@@ -147,7 +149,7 @@ const onClickTool = (e) => {
     isImg = true;
     canvas.style.cursor = "url(cursors/precision.cur) 0 20, auto";
     imgPanel.style.display = "block";
-    imgSpan.style.display = "none";
+    imgAlert.style.display = "none";
     if (imgReady.querySelector('img')) {
       imgReady.querySelector('img').remove();
     }
@@ -182,7 +184,14 @@ const onFileChange = (e) => {
   image = new Image()
   image.src = url;
   imgReady.appendChild(image);
-  imgSpan.style.display = "block";
+  imgAlert.style.display = "block";
+}
+const onTextChange = (e) => {
+  if(e.target.value){
+    textAlert.style.display = "block";
+  } else {
+    textAlert.style.display = "none";
+  }
 }
 
 canvas.addEventListener("mousedown", onMouseDown);
@@ -195,3 +204,4 @@ swatches.forEach((swatch) => swatch.addEventListener("click", onClickSwatch));
 
 strokeWidth.addEventListener("change", onChangeStrokeWidth);
 fileInput.addEventListener("change", onFileChange);
+textInput.addEventListener("input", onTextChange);

@@ -235,6 +235,12 @@ body {
   padding: 10px 4px;
 }
 
+.text-alert {
+  display: none;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
 .img-upload {
   display: none;
   padding: 10px 15px 20px;
@@ -247,7 +253,7 @@ body {
   font-size: 12px;
 }
 
-.img-span {
+.img-alert {
   display: none;
   margin-top: 10px;
   font-size: 12px;
