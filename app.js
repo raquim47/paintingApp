@@ -35,7 +35,7 @@ let isCircle = false;
 let isEraser = false;
 let isText = false;
 let isImg = false;
-let colorSaved = 'black';
+let colorSaved = "black";
 let image;
 
 let rectX = 0;
@@ -43,7 +43,7 @@ let rectY = 0;
 
 const onMouseMove = (e) => {
   if (!isPainting) {
-    return
+    return;
   }
   if (isBrush) {
     ctx.lineTo(e.offsetX, e.offsetY);
@@ -59,7 +59,6 @@ const onMouseMove = (e) => {
     const circleX = e.offsetX;
     const cwidth = circleX - rectX;
     if (cwidth > 0) {
-      console.log(rectX, rectY, circleX, cwidth)
       ctx.arc(rectX, rectY, cwidth, 0, Math.PI * 2, true);
       ctx.fill();
     }
@@ -102,7 +101,7 @@ const onMouseClick = (e) => {
     ctx.font = `${textWeight} ${textSize}px ${textFont}`;
     ctx.fillText(text, e.offsetX, e.offsetY);
     ctx.restore();
-  } 
+  }
 };
 
 const onClickTool = (e) => {
@@ -138,7 +137,7 @@ const onClickTool = (e) => {
     isEraser = true;
     canvas.style.cursor = "url(cursors/eraser.cur) 0 20, auto";
     strokePanel.style.display = "block";
-    ctx.strokeStyle = 'white';
+    ctx.strokeStyle = "white";
   } else if (data === "텍스트") {
     isText = true;
     canvas.style.cursor = "url(cursors/precision.cur) 0 20, auto";
@@ -150,14 +149,14 @@ const onClickTool = (e) => {
     canvas.style.cursor = "url(cursors/precision.cur) 0 20, auto";
     imgPanel.style.display = "block";
     imgAlert.style.display = "none";
-    if (imgReady.querySelector('img')) {
-      imgReady.querySelector('img').remove();
+    if (imgReady.querySelector("img")) {
+      imgReady.querySelector("img").remove();
     }
   }
 };
 
 const onClickSwatch = (e) => {
-  const swatchValue = colorSaved = e.target.dataset.color;
+  const swatchValue = (colorSaved = e.target.dataset.color);
   ctx.strokeStyle = ctx.fillStyle = colorInput.value = swatchValue;
 };
 
@@ -175,24 +174,27 @@ toolBtns.forEach((btn) => {
 });
 
 const onFileChange = (e) => {
-  const img = imgReady.querySelector('img');
+  const img = imgReady.querySelector("img");
   if (img) {
     img.remove();
   }
   const file = e.target.files[0];
   const url = URL.createObjectURL(file);
-  image = new Image()
+  image = new Image();
   image.src = url;
   imgReady.appendChild(image);
   imgAlert.style.display = "block";
-}
+};
 const onTextChange = (e) => {
-  if(e.target.value){
+  if (e.target.value) {
     textAlert.style.display = "block";
   } else {
     textAlert.style.display = "none";
   }
-}
+};
+canvas.addEventListener("touchmove", onMouseMove);
+canvas.addEventListener("touchstart", onMouseDown);
+canvas.addEventListener("touchend", onMouseUp);
 
 canvas.addEventListener("mousedown", onMouseDown);
 canvas.addEventListener("mouseup", onMouseUp);
