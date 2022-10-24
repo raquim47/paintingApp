@@ -3,12 +3,6 @@ body {
   color: #fff;
 }
 
-.main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .logo {
   width: 100px;
   margin-right: 20px;
@@ -45,6 +39,12 @@ body {
 
 .top-nav__btn:hover {
   color: #94b3ec;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .tools {
