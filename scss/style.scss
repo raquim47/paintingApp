@@ -1,0 +1,313 @@
+// var color 
+$color-border: rgba(195, 206, 215, 0.2);
+$color-bg: #2F3336;
+$color-text: #c2ced6;
+$color-accent: #94b3ec;
+$color-dark: #232527;
+
+body {
+  background: $color-bg;
+  color: #fff;
+}
+
+.main {
+  display: flex;
+}
+
+.logo {
+  width: 100px;
+  margin-right: 20px;
+  padding: 10px 0;
+  text-align: center;
+  border-right: 1px solid $color-border;
+  font-size: 18px;
+  font-weight: 500;
+  color: $color-accent;
+
+  i {
+    margin-right: 6px;
+  }
+}
+
+// top-bar
+.top-nav {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $color-border;
+
+  &__btn {
+    color: $color-text;
+    font-size: 14px;
+    margin-right: 10px;
+    padding: 8px;
+    margin-top: 4px;
+    cursor: pointer;
+  }
+
+  &__btn:hover {
+    color: $color-accent;
+  }
+}
+
+// section tools
+.tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+  height: calc(100vh - 59px);
+  padding-top: 20px;
+  border-right: 1px solid $color-border;
+
+  &__btn {
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+  &__btn::before {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-left: 10px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 300;
+    white-space: nowrap;
+    content: attr(data-text);
+  }
+
+  &__btn::after {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 40%;
+    transform: translateY(-50%);
+    border: 5px solid #000;
+    border-color: transparent rgba(0, 0, 0, 0.4) transparent transparent;
+    content: '';
+  }
+
+  &__btn:hover::before,
+  &__btn:hover::after {
+    display: block;
+  }
+
+  &__btn:hover i {
+    color: $color-accent;
+  }
+
+  &__btn i {
+    font-size: 30px;
+    color: #c2ced6;
+  }
+}
+
+// section canvas
+.canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  background: $color-dark;
+  border-right: 1px solid $color-border;
+
+  canvas {
+    width: 600px;
+    height: 600px;
+    background: #fff;
+  }
+}
+
+// section panel
+.panel {
+  width: 260px;
+}
+
+// section panel swatch
+.panel-swatch {
+  display: none;
+  padding: 10px 15px;
+  border-bottom: 1px solid $color-border;
+
+  h3 {
+    padding-bottom: 12px;
+    color: $color-text;
+    font-size: 12px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 8px;
+    background: $color-bg;
+    cursor: pointer;
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  table tr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 4px;
+  }
+
+  table td {
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    transition: all .1s ease-in-out;
+    cursor: pointer;
+  }
+
+  table td:hover {
+    opacity: .7;
+  }
+
+  &__latest {}
+
+  h4 {
+    padding-bottom: 12px;
+    color: $color-text;
+    font-size: 12px;
+  }
+}
+
+// section panel stroke
+.panel-stroke {
+  display: none;
+  padding: 10px 15px;
+
+  h3 {
+    color: $color-text;
+    font-size: 12px;
+    padding-bottom: 6px;
+  }
+
+  &__range {
+    display: flex;
+  }
+
+  &__range input {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__range span {
+    width: 20px;
+    margin-left: 12px;
+    text-align: right;
+    color: $color-text;
+  }
+}
+
+// section panel stroke
+.panel-text {
+  display: none;
+  padding: 10px 15px 20px;
+  border-bottom: 1px solid $color-border;
+
+  h3 {
+    padding-bottom: 12px;
+    color: #c2ced6;
+    font-size: 12px;
+  }
+
+  &__option {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__option select {
+    width: 90px;
+    border: none;
+    background: $color-dark;
+    color: #fff;
+  }
+
+  &__option input {
+    width: 35px;
+    border: none;
+    background: $color-dark;
+    color: #fff;
+  }
+
+  &__input {
+    width: 80%;
+    margin-top: 15px;
+    padding: 10px 4px;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  &__alert {
+    display: none;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+
+// section panel img-upload
+.panel-img {
+  display: none;
+  padding: 10px 15px 20px;
+  border-bottom: 1px solid $color-border;
+
+  h3 {
+    padding-bottom: 12px;
+    color: $color-text;
+    font-size: 12px;
+  }
+
+  &__ready {
+    position: relative;
+    height: 180px;
+    margin-bottom: 12px;
+    border: 2px dashed $color-text;
+  }
+
+  &__ready::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $color-text;
+    font-size: 30px;
+    content: '+';
+  }
+
+  &__ready img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__upload {
+    padding: 4px 6px;
+    background: $color-dark;
+    cursor: pointer;
+  }
+
+  &__upload:hover {
+    background: $color-accent;
+  }
+
+  &__upload input {
+    display: none;
+  }
+
+  &__alert {
+    display: none;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}

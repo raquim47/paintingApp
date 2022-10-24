@@ -1,23 +1,24 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
-const brush = document.querySelector("#brush");
+const toolBtns = Array.from(document.querySelectorAll("#tools button i"));
+
+const strokePanel = document.querySelector("#stroke");
 const strokeWidth = document.querySelector("#stroke-width");
 const strokeWidthNum = document.querySelector("#stroke-width-num");
-const toolBtns = Array.from(document.querySelectorAll(".tools button i"));
-const colorInput = document.querySelector(".color-input");
-const swatches = Array.from(document.querySelectorAll("#swatches td"));
-const swatchPanel = document.querySelector("#swatches");
-const strokePanel = document.querySelector("#stroke");
 
+const swatchPanel = document.querySelector("#swatch");
+const swatchInput = document.querySelector("#swatch-input");
+const swatches = Array.from(document.querySelectorAll("#swatch td"));
+
+const textPanel = document.querySelector("#text");
 const fontSizes = document.querySelector("#fontSizes");
 const fontTypes = document.querySelector("#fontTypes");
 const fontWeights = document.querySelector("#fontWeights");
 const textInput = document.querySelector("#text-input");
-const textPanel = document.querySelector("#text");
 const textAlert = document.querySelector("#text-alert");
 
 const imgPanel = document.querySelector("#img-upload");
-const fileInput = document.querySelector("#file");
+const imgInput = document.querySelector("#file");
 const imgReady = document.querySelector("#img-ready");
 const imgAlert = document.querySelector("#img-alert");
 
@@ -157,10 +158,10 @@ const onClickTool = (e) => {
 
 const onClickSwatch = (e) => {
   const swatchValue = (colorSaved = e.target.dataset.color);
-  ctx.strokeStyle = ctx.fillStyle = colorInput.value = swatchValue;
+  ctx.strokeStyle = ctx.fillStyle = swatchInput.value = swatchValue;
 };
 
-const onClickColorInput = (e) => {
+const onClickSwatchInput = (e) => {
   ctx.strokeStyle = ctx.fillStyle = e.target.value;
   colorSaved = e.target.value;
 };
@@ -201,9 +202,9 @@ canvas.addEventListener("mouseup", onMouseUp);
 canvas.addEventListener("mouseleave", onMouseUp);
 canvas.addEventListener("mousemove", onMouseMove);
 canvas.addEventListener("click", onMouseClick);
-colorInput.addEventListener("change", onClickColorInput);
+swatchInput.addEventListener("change", onClickSwatchInput);
 swatches.forEach((swatch) => swatch.addEventListener("click", onClickSwatch));
 
 strokeWidth.addEventListener("change", onChangeStrokeWidth);
-fileInput.addEventListener("change", onFileChange);
+imgInput.addEventListener("change", onFileChange);
 textInput.addEventListener("input", onTextChange);
