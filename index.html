@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,12 @@
   <link rel="stylesheet" href="css/style.css">
   <title>Paint!</title>
 </head>
+
 <body>
+  <div class="modal">
+    <p>Please increase the screen size<br>
+      (min-width: 1024px)</p>
+  </div>
   <nav class="top-nav">
     <h1 class="logo"><a href="#"><i class="fa-solid fa-palette"></i>Paint!</a></h1>
     <button id="reset-btn" class="top-nav__btn">새로 그리기</button>
@@ -54,7 +60,7 @@
       <div id="swatch" class="panel-swatch">
         <h3>색상</h3>
         <input id="swatch-input" class="panel-swatch__input" type="color">
-        <table >
+        <table>
           <tbody>
             <tr>
               <td style="background: #331900;" data-color="#331900"></td>
@@ -198,7 +204,7 @@
         </div>
       </div>
       <!-- 텍스트 -->
-      <div id="text"  class="panel-text">
+      <div id="text" class="panel-text">
         <h3>텍스트</h3>
         <div class="panel-text__option">
           <select id="fontTypes" autocomplete="off" required>
@@ -246,7 +252,7 @@
           </select>
           <input type="number" min="1" value="25" id="fontSizes" />
         </div>
-        <input id="text-input" class="panel-text__input" type="text" placeholder="Add text here..."/>
+        <input id="text-input" class="panel-text__input" type="text" placeholder="Add text here..." />
         <div id="text-alert" class="panel-text__alert">캔버스를 클릭하여 글자를 삽입하세요</div>
       </div>
       <!-- 이미지 첨부 -->
