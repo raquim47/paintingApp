@@ -1,7 +1,7 @@
 # painting-app
 Painting Board with VanillaJS
 - NomadCoders 기존 강의 내용에 추가 기능을 구현해보았다.
-- html, css, scss, JS, 
+- HTML, CSS, SCSS, JavaScript, 
 - 도형 그리기, 이미지 그리기, 사용한 색상 표시 
 
 ## Reference
@@ -52,7 +52,7 @@ Painting Board with VanillaJS
   
   
   <h5>7) 저장</h5>
-  <span>png 파일로 저장</span><br/>
+  <span>✔ png 파일로 저장</span><br/>
   
   <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp08.gif" />
 </div>
