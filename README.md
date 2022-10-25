@@ -1,6 +1,7 @@
 # painting-app
 Painting Board with VanillaJS
 - NomadCoders 기존 강의 내용에 추가 기능을 구현해보았다.
+- html, css, scss, JS, 
 - 도형 그리기, 이미지 그리기, 사용한 색상 표시 
 
 ## Reference
