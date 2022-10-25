@@ -22,6 +22,23 @@ const imgInput = document.querySelector("#file");
 const imgReady = document.querySelector("#img-ready");
 const imgAlert = document.querySelector("#img-alert");
 
+const resetBtn = document.querySelector("#reset-btn");
+const saveBtn = document.querySelector("#save-btn");
+
+const onSaveClick = () => {
+  const url = canvas.toDataURL();
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = "myDrawing.png";
+  a.click();
+}
+resetBtn.addEventListener('click', () => {
+  const reset = confirm('기존 작업을 모두 지우고 다시 그리시겠습니까?');
+  if (!reset) return;
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+})
+
+saveBtn.addEventListener('click', onSaveClick);
 const ACTIVE_CLASSNAME = "active";
 
 canvas.width = 600;
@@ -45,14 +62,13 @@ let startX = 0;
 let startY = 0;
 
 const showLatestColor = () => {
-  while(latestColorList.hasChildNodes()){
+  while (latestColorList.hasChildNodes()) {
     latestColorList.removeChild(latestColorList.firstChild);
   }
   latestColors.unshift(chosenColor);
   const set = new Set(latestColors);
   const pickedFive = [...set].slice(0, 5);
-  console.log(set, pickedFive)
-  pickedFive.forEach((color)=>{
+  pickedFive.forEach((color) => {
     const li = document.createElement('li');
     li.style.backgroundColor = color;
     latestColorList.append(li);
