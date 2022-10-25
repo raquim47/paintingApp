@@ -112,6 +112,10 @@ body {
   color: #c2ced6;
 }
 
+.tools__btn i.active {
+  color: #94b3ec;
+}
+
 .canvas {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -188,6 +192,20 @@ body {
 
 .panel-swatch table td:hover {
   opacity: .7;
+}
+
+.panel-swatch__latest ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.panel-swatch__latest ul li {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #c2ced6;
+  margin-right: 12px;
 }
 
 .panel-swatch h4 {

@@ -104,7 +104,11 @@ body {
 
   &__btn i {
     font-size: 30px;
-    color: #c2ced6;
+    color: $color-text;
+  }
+
+  &__btn i.active {
+    color: $color-accent;
   }
 }
 
@@ -173,7 +177,17 @@ body {
     opacity: .7;
   }
 
-  &__latest {}
+  &__latest ul {
+    display: flex;
+  }
+
+  &__latest ul li{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid $color-text;
+    margin-right: 12px;
+  }
 
   h4 {
     padding-bottom: 12px;

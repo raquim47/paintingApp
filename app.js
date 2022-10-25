@@ -1,7 +1,6 @@
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 const toolBtns = Array.from(document.querySelectorAll("#tools button i"));
-
 const strokePanel = document.querySelector("#stroke");
 const strokeWidth = document.querySelector("#stroke-width");
 const strokeWidthNum = document.querySelector("#stroke-width-num");
@@ -9,6 +8,7 @@ const strokeWidthNum = document.querySelector("#stroke-width-num");
 const swatchPanel = document.querySelector("#swatch");
 const swatchInput = document.querySelector("#swatch-input");
 const swatches = Array.from(document.querySelectorAll("#swatch td"));
+const latestColorList = document.querySelector("#latest-color-list");
 
 const textPanel = document.querySelector("#text");
 const fontSizes = document.querySelector("#fontSizes");
@@ -22,81 +22,102 @@ const imgInput = document.querySelector("#file");
 const imgReady = document.querySelector("#img-ready");
 const imgAlert = document.querySelector("#img-alert");
 
-const CANVAS_SIZE = 600;
-canvas.width = CANVAS_SIZE;
-canvas.height = CANVAS_SIZE;
+const ACTIVE_CLASSNAME = "active";
+
+canvas.width = 600;
+canvas.height = 600;
 ctx.lineWidth = strokeWidth.value;
 ctx.lineCap = "round";
 
-let isBrush = false;
-let isPainting = false;
+let isPainting = false; // 그림시작
+let isBrush = false; //
 let isFill = false;
 let isRectangle = false;
 let isCircle = false;
 let isEraser = false;
 let isText = false;
 let isImg = false;
-let colorSaved = "black";
+let chosenColor = "#000000";
+let latestColors = [];
 let image;
 
-let rectX = 0;
-let rectY = 0;
+let startX = 0;
+let startY = 0;
 
+const showLatestColor = () => {
+  while(latestColorList.hasChildNodes()){
+    latestColorList.removeChild(latestColorList.firstChild);
+  }
+  latestColors.unshift(chosenColor);
+  const set = new Set(latestColors);
+  const pickedFive = [...set].slice(0, 5);
+  console.log(set, pickedFive)
+  pickedFive.forEach((color)=>{
+    const li = document.createElement('li');
+    li.style.backgroundColor = color;
+    latestColorList.append(li);
+  })
+};
+
+// 캔버스에 마우스 눌렀을 때 startX, Y에 좌표 저장
+const onMouseDown = (e) => {
+  isPainting = true;
+  if (isBrush || isRectangle || isCircle) {
+    showLatestColor();
+  }
+  if (isRectangle || isCircle || isImg) {
+    startX = e.offsetX;
+    startY = e.offsetY;
+  }
+  ctx.beginPath();
+};
+
+// 캔버스에 마우스 움직일 때
 const onMouseMove = (e) => {
   if (!isPainting) {
     return;
   }
+  const currentX = e.offsetX;
+  const currentY = e.offsetY;
+  const width = currentX - startX;
+  const height = currentY - startY;
+  // 캔버스에 마우스 누르고 움직일 때
   if (isBrush) {
-    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.lineTo(currentX, currentY);
     ctx.stroke();
   } else if (isRectangle) {
-    const x = e.offsetX;
-    const y = e.offsetY;
-    const width = x - rectX;
-    const height = y - rectY;
-    ctx.moveTo(x, y);
-    ctx.fillRect(rectX, rectY, width, height);
-  } else if (isCircle) {
-    const circleX = e.offsetX;
-    const cwidth = circleX - rectX;
-    if (cwidth > 0) {
-      ctx.arc(rectX, rectY, cwidth, 0, Math.PI * 2, true);
-      ctx.fill();
-    }
+    ctx.moveTo(currentX, currentY);
+    ctx.fillRect(startX, startY, width, height);
+  } else if (isCircle && width > 0) {
+    ctx.arc(startX, startY, width, 0, Math.PI * 2, true);
+    ctx.fill();
   } else if (isEraser) {
-    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.lineTo(currentX, currentY);
     ctx.stroke();
   } else if (isImg && image) {
-    const x = e.offsetX;
-    const y = e.offsetY;
-    const width = x - rectX;
-    const height = y - rectY;
-    ctx.moveTo(x, y);
-    ctx.drawImage(image, rectX, rectY, width, height);
+    ctx.moveTo(currentX, currentY);
+    ctx.drawImage(image, startX, startY, width, height);
   }
   ctx.beginPath();
-  ctx.moveTo(e.offsetX, e.offsetY);
+  ctx.moveTo(currentX, currentY);
 };
 
-const onMouseDown = (e) => {
-  isPainting = true;
-  if (isRectangle || isCircle || isImg) {
-    rectX = e.offsetX;
-    rectY = e.offsetY;
-  }
-  ctx.beginPath();
-};
+// 캔버스 마우스 뗐을 때
 const onMouseUp = () => {
   isPainting = false;
 };
+
+// 캔버스 마우스 클릭했을 때
 const onMouseClick = (e) => {
   if (isFill) {
     ctx.fillRect(0, 0, 800, 800);
+    showLatestColor();
   } else if (isText) {
     const text = textInput.value;
     const textWeight = fontWeights.value;
     const textSize = fontSizes.value;
     const textFont = fontTypes.value;
+    showLatestColor();
     ctx.save();
     ctx.lineWidth = 1;
     ctx.font = `${textWeight} ${textSize}px ${textFont}`;
@@ -106,8 +127,8 @@ const onMouseClick = (e) => {
 };
 
 const onClickTool = (e) => {
-  toolBtns.forEach((btn) => (btn.style.color = "#c2ced6"));
-  e.target.style.color = "#94b3ec";
+  toolBtns.forEach((btn) => btn.classList.remove(ACTIVE_CLASSNAME));
+  e.target.classList.add(ACTIVE_CLASSNAME);
   const data = e.target.parentElement.dataset.text;
   isBrush = isFill = isRectangle = isCircle = isEraser = isText = isImg = false;
   image = "";
@@ -121,7 +142,7 @@ const onClickTool = (e) => {
     canvas.style.cursor = "url(cursors/brush.cur) 0 20, auto";
     swatchPanel.style.display = "block";
     strokePanel.style.display = "block";
-    ctx.strokeStyle = colorSaved;
+    ctx.strokeStyle = chosenColor;
   } else if (data === "채우기") {
     isFill = true;
     canvas.style.cursor = "url(cursors/fill.cur) 0 20, auto";
@@ -155,25 +176,23 @@ const onClickTool = (e) => {
     }
   }
 };
-
+// 컬러
 const onClickSwatch = (e) => {
-  const swatchValue = (colorSaved = e.target.dataset.color);
+  const swatchValue = (chosenColor = e.target.dataset.color);
   ctx.strokeStyle = ctx.fillStyle = swatchInput.value = swatchValue;
 };
 
 const onClickSwatchInput = (e) => {
   ctx.strokeStyle = ctx.fillStyle = e.target.value;
-  colorSaved = e.target.value;
+  chosenColor = e.target.value;
 };
-
+// 선굵기
 const onChangeStrokeWidth = (e) => {
   strokeWidthNum.innerText = e.target.value;
   ctx.lineWidth = e.target.value;
 };
-toolBtns.forEach((btn) => {
-  btn.addEventListener("click", (e) => onClickTool(e));
-});
 
+// 이미지 입력
 const onFileChange = (e) => {
   const img = imgReady.querySelector("img");
   if (img) {
@@ -186,6 +205,7 @@ const onFileChange = (e) => {
   imgReady.appendChild(image);
   imgAlert.style.display = "block";
 };
+// 텍스트 입력
 const onTextChange = (e) => {
   if (e.target.value) {
     textAlert.style.display = "block";
@@ -193,6 +213,7 @@ const onTextChange = (e) => {
     textAlert.style.display = "none";
   }
 };
+
 canvas.addEventListener("touchmove", onMouseMove);
 canvas.addEventListener("touchstart", onMouseDown);
 canvas.addEventListener("touchend", onMouseUp);
@@ -202,6 +223,9 @@ canvas.addEventListener("mouseup", onMouseUp);
 canvas.addEventListener("mouseleave", onMouseUp);
 canvas.addEventListener("mousemove", onMouseMove);
 canvas.addEventListener("click", onMouseClick);
+toolBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => onClickTool(e));
+});
 swatchInput.addEventListener("change", onClickSwatchInput);
 swatches.forEach((swatch) => swatch.addEventListener("click", onClickSwatch));
 
