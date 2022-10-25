@@ -13,45 +13,45 @@ Painting Board with VanillaJS
   <h3>그림 앱</h3>
   <h4>1. 기본 화면</h4>
   
-  <img width="80%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp01.jpg" />
+  <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp01.png" />
   
   <h4>2. 구현 기능</h4>
   <h5>1) 브러쉬</h5>
   <span>✔ 브러쉬, 색상 변경, 굵기 변경</span><br/>
   
-  <img width="80%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp02.gif" />
+  <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp02.gif" />
   
   <h5>2) 채우기</h5>
   <span>✔ 캔버스 전체 색 채우기, 색상 변경</span><br/>
   
-  <img width="80%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp03.gif" />
+  <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp03.gif" />
   
   
   <h5>3) 사각형 / 원형</h5>
   <span>✔ 사각형 / 원형 그리기, 색상 변경</span><br/>
   
-  <img width="80%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp04.gif" />
+  <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp04.gif" />
 
   <h5>4) 지우개</h5>
   <span>✔ 지우개, 굵기 변경</span><br/>
   
-  <img width="80%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp05.gif" />
+  <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp05.gif" />
 
 
   <h5>5) Text</h5>
   <span>✔ 텍스트 입력, 글씨 크기, 폰트, 굵기 지정</span><br/>
   
-  <img width="80%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp06.gif" />
+  <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp06.gif" />
 
 
   <h5>6) 이미지</h5>
   <span>✔ 이미지 삽입, 미리보기</span><br/>
   
-  <img width="80%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp07.gif" />
+  <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp07.gif" />
   
   
   <h5>7) 저장</h5>
   <span>png 파일로 저장</span><br/>
   
-  <img width="80%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp08.gif" />
+  <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp08.gif" />
 </div>
