@@ -206,6 +206,7 @@ body {
   border-radius: 50%;
   border: 2px solid #c2ced6;
   margin-right: 12px;
+  cursor: pointer;
 }
 
 .panel-swatch h4 {

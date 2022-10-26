@@ -9,7 +9,6 @@ const swatchPanel = document.querySelector("#swatch");
 const swatchInput = document.querySelector("#swatch-input");
 const swatches = Array.from(document.querySelectorAll("#swatch td"));
 const latestColorList = document.querySelector("#latest-color-list");
-
 const textPanel = document.querySelector("#text");
 const fontSizes = document.querySelector("#fontSizes");
 const fontTypes = document.querySelector("#fontTypes");
@@ -25,20 +24,6 @@ const imgAlert = document.querySelector("#img-alert");
 const resetBtn = document.querySelector("#reset-btn");
 const saveBtn = document.querySelector("#save-btn");
 
-const onSaveClick = () => {
-  const url = canvas.toDataURL();
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = "myDrawing.png";
-  a.click();
-}
-resetBtn.addEventListener('click', () => {
-  const reset = confirm('기존 작업을 모두 지우고 다시 그리시겠습니까?');
-  if (!reset) return;
-  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-})
-
-saveBtn.addEventListener('click', onSaveClick);
 const ACTIVE_CLASSNAME = "active";
 
 canvas.width = 600;
@@ -60,20 +45,6 @@ let image;
 
 let startX = 0;
 let startY = 0;
-
-const showLatestColor = () => {
-  while (latestColorList.hasChildNodes()) {
-    latestColorList.removeChild(latestColorList.firstChild);
-  }
-  latestColors.unshift(chosenColor);
-  const set = new Set(latestColors);
-  const pickedFive = [...set].slice(0, 5);
-  pickedFive.forEach((color) => {
-    const li = document.createElement('li');
-    li.style.backgroundColor = color;
-    latestColorList.append(li);
-  })
-};
 
 // 캔버스에 마우스 눌렀을 때 startX, Y에 좌표 저장
 const onMouseDown = (e) => {
@@ -194,8 +165,27 @@ const onClickTool = (e) => {
 };
 // 컬러
 const onClickSwatch = (e) => {
-  const swatchValue = (chosenColor = e.target.dataset.color);
+  console.log('hi');
+  const swatchValue = e.target.dataset.color;
+  chosenColor = e.target.dataset.color;
   ctx.strokeStyle = ctx.fillStyle = swatchInput.value = swatchValue;
+};
+
+// 최근 사용 컬러  저장
+const showLatestColor = () => {
+  while (latestColorList.hasChildNodes()) {
+    latestColorList.removeChild(latestColorList.firstChild);
+  }
+  latestColors.unshift(chosenColor);
+  const set = new Set(latestColors);
+  const pickedFive = [...set].slice(0, 5);
+  pickedFive.forEach((color) => {
+    const li = document.createElement('li');
+    li.dataset.color = color;
+    li.style.backgroundColor = color;
+    li.addEventListener('click', onClickSwatch);
+    latestColorList.append(li);
+  })
 };
 
 const onClickSwatchInput = (e) => {
@@ -230,6 +220,24 @@ const onTextChange = (e) => {
   }
 };
 
+
+
+// 저장
+const onSaveClick = () => {
+  const url = canvas.toDataURL();
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = "myDrawing.png";
+  a.click();
+}
+
+// 리셋
+const onResetClick = () => {
+  const reset = confirm('기존 작업을 모두 지우고 다시 그리시겠습니까?');
+  if (!reset) return;
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+}
+
 canvas.addEventListener("touchmove", onMouseMove);
 canvas.addEventListener("touchstart", onMouseDown);
 canvas.addEventListener("touchend", onMouseUp);
@@ -248,3 +256,6 @@ swatches.forEach((swatch) => swatch.addEventListener("click", onClickSwatch));
 strokeWidth.addEventListener("change", onChangeStrokeWidth);
 imgInput.addEventListener("change", onFileChange);
 textInput.addEventListener("input", onTextChange);
+
+resetBtn.addEventListener('click', onResetClick);
+saveBtn.addEventListener('click', onSaveClick);
