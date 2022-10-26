@@ -32,25 +32,30 @@
   
   <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp04.gif" />
 
-  <h4>4) 지우개</h4>
-  <h5>✔ 지우개, 굵기 변경</h5><br/>
+  <h4>4) 최근 사용한 색상</h4>
+  <h5>✔ 기존 색상 선택 기능 함수를 재사용하여 최근 사용한 색상을 화면에 표시하고 클릭하면 사용할 수 있게 구현</h5><br/>
   
   <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp05.gif" />
 
-
-  <h4>5) Text</h4>
-  <h5>✔ 텍스트 입력, 글씨 크기, 폰트, 굵기 지정</h5><br/>
+  <h4>5) 지우개</h4>
+  <h5>✔ 지우개, 굵기 변경</h5><br/>
   
   <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp06.gif" />
 
-  <h4>6) 이미지</h4>
-  <h5>✔ 이미지 삽입, 미리보기</h5><br/>
+
+  <h4>6) Text</h4>
+  <h5>✔ 텍스트 입력, 글씨 크기, 폰트, 굵기 지정</h5><br/>
   
   <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp07.gif" />
-  
-  
-  <h4>7) 저장</h4>
-  <h5>✔ png 파일로 저장</h5><br/>
+
+  <h4>7) 이미지</h4>
+  <h5>✔ 이미지 삽입, 미리보기</h5><br/>
   
   <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp08.gif" />
+  
+  
+  <h4>8) 저장</h4>
+  <h5>✔ png 파일로 저장</h5><br/>
+  
+  <img width="90%" src="https://raw.githubusercontent.com/raquim47/data/main/painting-app/paintapp09.gif" />
 </div>
