@@ -1,11 +1,9 @@
 # Painting-App
 ## Painting-App with VanillaJS
-- NomadCoders 기존 강의 내용에 추가 기능을 구현.
 - HTML, CSS, SCSS, JavaScript
 - 도형 그리기, 이미지 그리기, 사용한 색상 표시 
 
 ## Reference
-- NomadCoders 바닐라JS로 그림판 만들기: https://nomadcoders.co/javascript-for-beginners-2/lobby
 - Canvas API: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
 
 ## Results
