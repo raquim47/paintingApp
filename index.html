@@ -22,42 +22,42 @@
   </nav>
   <main class="main">
     <section id="tools" class="tools">
-      <h2 class="ir-so">도구</h2>
-      <button class="tools__btn" data-text="브러쉬">
-        <span class="ir-so">브러쉬</span>
+      <h2 class="ir">도구</h2>
+      <button class="tools__btn" data-tool="brush" data-cursor="brush">
+        <span class="tooltip">브러쉬</span>
         <i class="fa-solid fa-paintbrush"></i>
       </button>
-      <button class="tools__btn" data-text="채우기">
-        <span class="ir-so">채우기</span>
+      <button class="tools__btn" data-tool="fill" data-cursor="fill">
+        <span class="tooltip">채우기</span>
         <i class="fa-solid fa-fill"></i></button>
-      <button class="tools__btn" data-text="사각형">
-        <span class="ir-so">사각형</span>
+      <button class="tools__btn" data-tool="square" data-cursor="precision">
+        <span class="tooltip">사각형</span>
         <i class="fa-solid fa-square"></i>
       </button>
-      <button class="tools__btn" data-text="원">
-        <span class="ir-so">원</span>
+      <button class="tools__btn" data-tool="circle" data-cursor="precision">
+        <span class="tooltip">원</span>
         <i class="fa-solid fa-circle"></i>
       </button>
-      <button class="tools__btn" data-text="지우개">
-        <span class="ir-so">지우개</span>
+      <button class="tools__btn" data-tool="eraser" data-cursor="eraser">
+        <span class="tooltip">지우개</span>
         <i class="fa-solid fa-eraser"></i>
       </button>
-      <button class="tools__btn" data-text="텍스트">
-        <span class="ir-so">텍스트</span>
+      <button class="tools__btn" data-tool="text" data-cursor="precision">
+        <span class="tooltip">텍스트</span>
         <i class="fa-solid fa-font"></i>
       </button>
-      <button class="tools__btn" data-text="이미지">
-        <span class="ir-so">이미지</span>
+      <button class="tools__btn" data-tool="image" data-cursor="precision">
+        <span class="tooltip">이미지</span>
         <i class="fa-solid fa-image"></i>
       </button>
     </section>
     <section class="canvas">
       <canvas id="canvas"></canvas>
     </section>
-    <section class="panel">
-      <h2 class="ir-so">상세 패널</h2>
+    <section class="panels">
+      <h2 class="ir">상세 패널</h2>
       <!-- 색상 -->
-      <div id="swatch" class="panel-swatch">
+      <div id="swatch" class="panel panel-swatch hidden" data-panel="swatch">
         <h3>색상</h3>
         <input id="swatch-input" class="panel-swatch__input" type="color">
         <table>
@@ -196,15 +196,15 @@
         </div>
       </div>
       <!-- 선 굵기 -->
-      <div id="stroke" class="panel-stroke">
+      <div id="stroke" class="panel panel-stroke hidden" data-panel="stroke">
         <h3>선 굵기</h3>
         <div class="panel-stroke__range">
           <input id="stroke-width" type="range" min="1" max="20" value="10" step="1">
           <span id="stroke-width-num">10</span>
         </div>
       </div>
-      <!-- 텍스트 -->
-      <div id="text" class="panel-text">
+      <!-- 타이포 -->
+      <div id="text" class="panel panel-text hidden" data-panel="typo">
         <h3>텍스트</h3>
         <div class="panel-text__option">
           <select id="fontTypes" autocomplete="off" required>
@@ -256,7 +256,7 @@
         <div id="text-alert" class="panel-text__alert">캔버스를 클릭하여 글자를 삽입하세요</div>
       </div>
       <!-- 이미지 첨부 -->
-      <div id="img-upload" class="panel-img">
+      <div id="img-upload" class="panel panel-img hidden" data-panel="image">
         <h3>이미지 등록</h3>
         <div id="img-ready" class="panel-img__ready">
         </div>
@@ -270,7 +270,8 @@
   </main>
 
   <script src="https://kit.fontawesome.com/0d80c14f2f.js" crossorigin="anonymous"></script>
-  <script src="app.js"></script>
+  <!-- <script src="app.js"></script> -->
+  <script src="tools.js"></script>
 </body>
 
 </html>

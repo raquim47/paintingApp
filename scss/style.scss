@@ -65,7 +65,7 @@ body {
     cursor: pointer;
   }
 
-  &__btn::before {
+  &__btn .tooltip {
     display: none;
     position: absolute;
     left: 100%;
@@ -79,22 +79,19 @@ body {
     font-size: 12px;
     font-weight: 300;
     white-space: nowrap;
-    content: attr(data-text);
   }
 
-  &__btn::after {
-    display: none;
+  &__btn .tooltip::before {
     position: absolute;
-    left: 100%;
-    top: 40%;
+    right: 100%;
+    top: 50%;
     transform: translateY(-50%);
     border: 5px solid #000;
     border-color: transparent rgba(0, 0, 0, 0.4) transparent transparent;
     content: '';
   }
 
-  &__btn:hover::before,
-  &__btn:hover::after {
+  &__btn:hover .tooltip {
     display: block;
   }
 
@@ -107,7 +104,7 @@ body {
     color: $color-text;
   }
 
-  &__btn i.active {
+  &__btn.active i {
     color: $color-accent;
   }
 }
@@ -128,14 +125,17 @@ body {
   }
 }
 
-// section panel
-.panel {
+// section panels
+.panels {
   width: 260px;
+}
+
+.panel.hidden {
+  display: none;
 }
 
 // section panel > swatch
 .panel-swatch {
-  display: none;
   padding: 10px 15px;
   border-bottom: 1px solid $color-border;
 
@@ -199,7 +199,6 @@ body {
 
 // section panel > stroke
 .panel-stroke {
-  display: none;
   padding: 10px 15px;
 
   h3 {
@@ -227,7 +226,6 @@ body {
 
 // section panel > stroke
 .panel-text {
-  display: none;
   padding: 10px 15px 20px;
   border-bottom: 1px solid $color-border;
 
@@ -273,7 +271,6 @@ body {
 
 // section panel > img-upload
 .panel-img {
-  display: none;
   padding: 10px 15px 20px;
   border-bottom: 1px solid $color-border;
 

@@ -1,35 +1,37 @@
-const canvas = document.querySelector("#canvas");
-const ctx = canvas.getContext("2d");
-const toolBtns = Array.from(document.querySelectorAll("#tools button i"));
-const strokePanel = document.querySelector("#stroke");
-const strokeWidth = document.querySelector("#stroke-width");
-const strokeWidthNum = document.querySelector("#stroke-width-num");
+const canvas = document.querySelector('#canvas');
+const ctx = canvas.getContext('2d');
+const toolBtns = Array.from(document.querySelectorAll('#tools button'));
+const strokePanel = document.querySelector('#stroke');
+const strokeWidth = document.querySelector('#stroke-width');
+const strokeWidthNum = document.querySelector('#stroke-width-num');
 
-const swatchPanel = document.querySelector("#swatch");
-const swatchInput = document.querySelector("#swatch-input");
-const swatches = Array.from(document.querySelectorAll("#swatch td"));
-const latestColorList = document.querySelector("#latest-color-list");
-const textPanel = document.querySelector("#text");
-const fontSizes = document.querySelector("#fontSizes");
-const fontTypes = document.querySelector("#fontTypes");
-const fontWeights = document.querySelector("#fontWeights");
-const textInput = document.querySelector("#text-input");
-const textAlert = document.querySelector("#text-alert");
+const swatchPanel = document.querySelector('#swatch');
+const swatchInput = document.querySelector('#swatch-input');
+const swatches = Array.from(document.querySelectorAll('#swatch td'));
+const latestColorList = document.querySelector('#latest-color-list');
+const textPanel = document.querySelector('#text');
+const fontSizes = document.querySelector('#fontSizes');
+const fontTypes = document.querySelector('#fontTypes');
+const fontWeights = document.querySelector('#fontWeights');
+const textInput = document.querySelector('#text-input');
+const textAlert = document.querySelector('#text-alert');
 
-const imgPanel = document.querySelector("#img-upload");
-const imgInput = document.querySelector("#file");
-const imgReady = document.querySelector("#img-ready");
-const imgAlert = document.querySelector("#img-alert");
+const imgPanel = document.querySelector('#img-upload');
+const imgInput = document.querySelector('#file');
+const imgReady = document.querySelector('#img-ready');
+const imgAlert = document.querySelector('#img-alert');
 
-const resetBtn = document.querySelector("#reset-btn");
-const saveBtn = document.querySelector("#save-btn");
+const resetBtn = document.querySelector('#reset-btn');
+const saveBtn = document.querySelector('#save-btn');
 
-const ACTIVE_CLASSNAME = "active";
+const ACTIVE_CLASSNAME = 'active';
+const HIDDEN_CLASSNAME = 'hidden';
+const panels = Array.from(document.querySelectorAll('.panel'));
 
 canvas.width = 600;
 canvas.height = 600;
 ctx.lineWidth = strokeWidth.value;
-ctx.lineCap = "round";
+ctx.lineCap = 'round';
 
 let isPainting = false; // 그림시작
 let isBrush = false; //
@@ -39,7 +41,7 @@ let isCircle = false;
 let isEraser = false;
 let isText = false;
 let isImg = false;
-let chosenColor = "#000000";
+let chosenColor = '#000000';
 let latestColors = [];
 let image;
 
@@ -115,51 +117,53 @@ const onMouseClick = (e) => {
 
 const onClickTool = (e) => {
   toolBtns.forEach((btn) => btn.classList.remove(ACTIVE_CLASSNAME));
-  e.target.classList.add(ACTIVE_CLASSNAME);
+  e.currentTarget.classList.add(ACTIVE_CLASSNAME);
   const data = e.target.parentElement.dataset.text;
+  panels.forEach((panel) => panel.classList.add(HIDDEN_CLASSNAME));
+
   isBrush = isFill = isRectangle = isCircle = isEraser = isText = isImg = false;
-  image = "";
-  swatchPanel.style.display = "none";
-  strokePanel.style.display = "none";
-  textPanel.style.display = "none";
-  imgPanel.style.display = "none";
-  textAlert.style.display = "none";
-  if (data === "브러쉬") {
+  image = '';
+  // swatchPanel.style.display = 'none';
+  // strokePanel.style.display = 'none';
+  // textPanel.style.display = 'none';
+  // imgPanel.style.display = 'none';
+  // textAlert.style.display = 'none';
+  if (data === '브러쉬') {
     isBrush = true;
-    canvas.style.cursor = "url(cursors/brush.cur) 0 20, auto";
-    swatchPanel.style.display = "block";
-    strokePanel.style.display = "block";
+    canvas.style.cursor = 'url(cursors/brush.cur) 0 20, auto';
+    swatchPanel.style.display = 'block';
+    strokePanel.style.display = 'block';
     ctx.strokeStyle = chosenColor;
-  } else if (data === "채우기") {
+  } else if (data === '채우기') {
     isFill = true;
-    canvas.style.cursor = "url(cursors/fill.cur) 0 20, auto";
-    swatchPanel.style.display = "block";
-  } else if (data === "사각형") {
+    canvas.style.cursor = 'url(cursors/fill.cur) 0 20, auto';
+    swatchPanel.style.display = 'block';
+  } else if (data === '사각형') {
     isRectangle = true;
-    canvas.style.cursor = "url(cursors/precision.cur) 0 20, auto";
-    swatchPanel.style.display = "block";
-  } else if (data === "원") {
+    canvas.style.cursor = 'url(cursors/precision.cur) 0 20, auto';
+    swatchPanel.style.display = 'block';
+  } else if (data === '원') {
     isCircle = true;
-    canvas.style.cursor = "url(cursors/precision.cur) 0 20, auto";
-    swatchPanel.style.display = "block";
-  } else if (data === "지우개") {
+    canvas.style.cursor = 'url(cursors/precision.cur) 0 20, auto';
+    swatchPanel.style.display = 'block';
+  } else if (data === '지우개') {
     isEraser = true;
-    canvas.style.cursor = "url(cursors/eraser.cur) 0 20, auto";
-    strokePanel.style.display = "block";
-    ctx.strokeStyle = "white";
-  } else if (data === "텍스트") {
+    canvas.style.cursor = 'url(cursors/eraser.cur) 0 20, auto';
+    strokePanel.style.display = 'block';
+    ctx.strokeStyle = 'white';
+  } else if (data === '텍스트') {
     isText = true;
-    canvas.style.cursor = "url(cursors/precision.cur) 0 20, auto";
-    swatchPanel.style.display = "block";
-    textPanel.style.display = "block";
-    textInput.value = "";
-  } else if (data === "이미지") {
+    canvas.style.cursor = 'url(cursors/precision.cur) 0 20, auto';
+    swatchPanel.style.display = 'block';
+    textPanel.style.display = 'block';
+    textInput.value = '';
+  } else if (data === '이미지') {
     isImg = true;
-    canvas.style.cursor = "url(cursors/precision.cur) 0 20, auto";
-    imgPanel.style.display = "block";
-    imgAlert.style.display = "none";
-    if (imgReady.querySelector("img")) {
-      imgReady.querySelector("img").remove();
+    canvas.style.cursor = 'url(cursors/precision.cur) 0 20, auto';
+    imgPanel.style.display = 'block';
+    imgAlert.style.display = 'none';
+    if (imgReady.querySelector('img')) {
+      imgReady.querySelector('img').remove();
     }
   }
 };
@@ -185,7 +189,7 @@ const showLatestColor = () => {
     li.style.backgroundColor = color;
     li.addEventListener('click', onClickSwatch);
     latestColorList.append(li);
-  })
+  });
 };
 
 const onClickSwatchInput = (e) => {
@@ -200,7 +204,7 @@ const onChangeStrokeWidth = (e) => {
 
 // 이미지 입력
 const onFileChange = (e) => {
-  const img = imgReady.querySelector("img");
+  const img = imgReady.querySelector('img');
   if (img) {
     img.remove();
   }
@@ -209,53 +213,53 @@ const onFileChange = (e) => {
   image = new Image();
   image.src = url;
   imgReady.appendChild(image);
-  imgAlert.style.display = "block";
+  imgAlert.style.display = 'block';
 };
 // 텍스트 입력
 const onTextChange = (e) => {
   if (e.target.value) {
-    textAlert.style.display = "block";
+    textAlert.style.display = 'block';
   } else {
-    textAlert.style.display = "none";
+    textAlert.style.display = 'none';
   }
 };
-
-
 
 // 저장
 const onSaveClick = () => {
   const url = canvas.toDataURL();
   const a = document.createElement('a');
   a.href = url;
-  a.download = "myDrawing.png";
+  a.download = 'myDrawing.png';
   a.click();
-}
+};
 
 // 리셋
 const onResetClick = () => {
   const reset = confirm('기존 작업을 모두 지우고 다시 그리시겠습니까?');
   if (!reset) return;
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-}
+};
 
-canvas.addEventListener("touchmove", onMouseMove);
-canvas.addEventListener("touchstart", onMouseDown);
-canvas.addEventListener("touchend", onMouseUp);
-
-canvas.addEventListener("mousedown", onMouseDown);
-canvas.addEventListener("mouseup", onMouseUp);
-canvas.addEventListener("mouseleave", onMouseUp);
-canvas.addEventListener("mousemove", onMouseMove);
-canvas.addEventListener("click", onMouseClick);
 toolBtns.forEach((btn) => {
-  btn.addEventListener("click", (e) => onClickTool(e));
+  btn.addEventListener('click', (e) => onClickTool(e));
 });
-swatchInput.addEventListener("change", onClickSwatchInput);
-swatches.forEach((swatch) => swatch.addEventListener("click", onClickSwatch));
 
-strokeWidth.addEventListener("change", onChangeStrokeWidth);
-imgInput.addEventListener("change", onFileChange);
-textInput.addEventListener("input", onTextChange);
+canvas.addEventListener('touchmove', onMouseMove);
+canvas.addEventListener('touchstart', onMouseDown);
+canvas.addEventListener('touchend', onMouseUp);
+
+canvas.addEventListener('mousedown', onMouseDown);
+canvas.addEventListener('mouseup', onMouseUp);
+canvas.addEventListener('mouseleave', onMouseUp);
+canvas.addEventListener('mousemove', onMouseMove);
+canvas.addEventListener('click', onMouseClick);
+
+swatchInput.addEventListener('change', onClickSwatchInput);
+swatches.forEach((swatch) => swatch.addEventListener('click', onClickSwatch));
+
+strokeWidth.addEventListener('change', onChangeStrokeWidth);
+imgInput.addEventListener('change', onFileChange);
+textInput.addEventListener('input', onTextChange);
 
 resetBtn.addEventListener('click', onResetClick);
 saveBtn.addEventListener('click', onSaveClick);
